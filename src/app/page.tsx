@@ -1,9 +1,14 @@
-import Image from 'next/image'
+import Todo from "./_components/Todo";
 
 export default function Home() {
   return (
-    <main className="">
-      Todo App  
-    </main>
-  )
+    <>
+      <header className="pt-12 text-center pb-5">
+        <h1 className="text-3xl font-bold">To-Do App</h1>
+      </header>
+      <main className='max-w-xl mx-auto'>
+        <Todo />
+      </main>
+    </>
+  );
 }
