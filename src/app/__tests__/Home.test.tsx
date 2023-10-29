@@ -6,6 +6,8 @@ describe('Home Page', () => {
   it('should have header text', () => {
     render(<Home />);
     const header = screen.getByText('To-Do App');
+
+    // Assert that the header is rendered
     expect(header).toBeInTheDocument();
   });
 });

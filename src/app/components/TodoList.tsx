@@ -9,6 +9,7 @@ interface TodoListProps {
   removeCompleted: () => void;
 }
 
+// Enumeration for filtering todos
 enum FILTERED_STATE {
   ALL = 'All',
   ACTIVE = 'Active',
@@ -18,6 +19,7 @@ enum FILTERED_STATE {
 const TodoList = ({ todos, removeTodo, toggleComplete, removeCompleted }: TodoListProps): JSX.Element => {
   const [filteredState, setFilteredState] = useState<FILTERED_STATE>(FILTERED_STATE.ALL);
 
+  // Filter the todos based on the selected filter
   const updatedTodos: TodoInterface[] = todos.filter(({ isComplete }) => {
     if (filteredState === FILTERED_STATE.ALL) {
       return true;
@@ -28,43 +30,44 @@ const TodoList = ({ todos, removeTodo, toggleComplete, removeCompleted }: TodoLi
     }
   });
 
+  // Handle the change of the selected filter
   const handleFilterChange = (filter: FILTERED_STATE) => {
     setFilteredState(filter);
   }
 
   return (
     <div className='mt-4 border border-gray-700 rounded-b'>
-      <ul className='bg-slate-100 max-h-96 overflow-y-scroll'>
+      <ul className='bg-slate-50 max-h-96 overflow-y-scroll'>
         {updatedTodos.map(({ id, title, isComplete }) => (
           <li key={id} className='flex flex-row w-full justify-between p-4  border-solid border-b border-gray-700 last:border-0'>
             <div className='h-full flex align-middle'>
               <button onClick={() => toggleComplete(id)} className='pr-2 w-10'>
-                {isComplete ? <div><CheckCircleIcon className="h-7 w-7 text-blue-500" /></div> : <div className="h-6 w-6 rounded-full border border-gray-700" />}
+                {isComplete ? <div><CheckCircleIcon className="h-7 w-7 text-green-600" /></div> : <div className="h-6 w-6 rounded-full border border-gray-700" />}
               </button>
               <h3 className={`text-lg ${isComplete ? 'line-through text-slate-500' : 'text-slate-800'}`}>{title}</h3>
             </div>
             <div>
               <button onClick={() => removeTodo(id)}>
-                <XMarkIcon className="h-6 w-6 text-blue-500 hover:text-blue-700" />
+                <XMarkIcon className="h-6 w-6 text-red-500 hover:text-red-700" />
               </button>
             </div>
           </li>
         ))}
 
-        {/* display message if list is empty */}
+        {/* Display a message if the list is empty */}
         {!updatedTodos.length && (
-          <li className='w-full p-4 bg-slate-100'>
-            No Items in the list
+          <li className='w-full p-4 bg-slate-50 h-48'>
+            <h3 className='text-lg'>No Items in the list</h3>
           </li>
         )}
       </ul>
 
-      <div className='bg-slate-100 flex justify-between items-center p-4 rounded-b flex-col sm:flex-row border-solid border-t border-gray-700'>
+      <div className='bg-gray-300 text-lg font-semibold flex justify-between items-center p-4 rounded-b flex-col sm:flex-row border-solid border-t border-gray-700'>
         <div className='pb-2 sm:pb-0'>
           {Object.values(FILTERED_STATE).map((filter) => (
             <button
               key={filter}
-              className={`mr-2 font-semibold ${filteredState === filter ? 'text-blue-500' : 'text-gray-600 hover:text-gray-800'}`}
+              className={`mr-2 ${filteredState === filter ? 'text-blue-600' : 'text-gray-600 hover:text-gray-800'}`}
               onClick={() => handleFilterChange(filter)}
             >
               {filter}
@@ -72,7 +75,7 @@ const TodoList = ({ todos, removeTodo, toggleComplete, removeCompleted }: TodoLi
           ))}
         </div>
         <div>
-          <button className='font-semibold text-gray-600 hover:text-gray-800' onClick={removeCompleted}>Clear Completed</button>
+          <button className='text-gray-600 hover:text-gray-800' onClick={removeCompleted}>Clear Completed</button>
         </div>
       </div>
     </div>
