@@ -10,7 +10,17 @@ Users will be able to -
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies
+
+Please use Node v18 and above.
+
+```bash
+npm install
+# or
+yarn
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
