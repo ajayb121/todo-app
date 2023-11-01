@@ -73,7 +73,7 @@ describe('Todo Component', () => {
     fireEvent.click(toggleButton[0]);
 
     // Remove completed todos
-    const removeCompletedButton = screen.getByText('Clear Completed');
+    const removeCompletedButton = screen.getByText('Remove Completed');
     fireEvent.click(removeCompletedButton);
 
     // Ensure that the completed todo is removed
