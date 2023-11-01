@@ -40,7 +40,7 @@ yarn test
 
 ## Technologies used
 
-1. This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+1. This is a Next.js project bootstrapped with `create-next-app`
 2. TypeScript
 3. Tailwind CSS
 4. React Testing Library
