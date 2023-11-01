@@ -4,8 +4,8 @@ import { TodoInterface } from '@/types/todo';
 
 interface TodoListProps {
   todos: TodoInterface[];
-  removeTodo: (index: number) => void;
-  toggleComplete: (index: number) => void;
+  removeTodo: (index: string) => void;
+  toggleComplete: (index: string) => void;
   removeCompleted: () => void;
 }
 
@@ -36,18 +36,18 @@ const TodoList = ({ todos, removeTodo, toggleComplete, removeCompleted }: TodoLi
   }
 
   return (
-    <div className='mt-4 border border-gray-700 rounded-b'>
+    <div className='mt-4 border border-gray-700 rounded-b' data-testid="todo-list">
       <ul className='bg-slate-50 max-h-96 overflow-y-scroll'>
         {updatedTodos.map(({ id, title, isComplete }) => (
           <li key={id} className='flex flex-row w-full justify-between p-4  border-solid border-b border-gray-700 last:border-0'>
             <div className='h-full flex align-middle'>
-              <button onClick={() => toggleComplete(id)} className='pr-2 w-10'>
+              <button onClick={() => toggleComplete(id)} className='pr-2 w-10' aria-label='toggle isItem complete'>
                 {isComplete ? <div><CheckCircleIcon className="h-7 w-7 text-green-600" /></div> : <div className="h-6 w-6 rounded-full border border-gray-700" />}
               </button>
-              <h3 className={`text-lg ${isComplete ? 'line-through text-slate-500' : 'text-slate-800'}`}>{title}</h3>
+              <p className={`text-lg ${isComplete ? 'line-through text-slate-500' : 'text-slate-800'}`}>{title}</p>
             </div>
             <div>
-              <button onClick={() => removeTodo(id)}>
+              <button onClick={() => removeTodo(id)} aria-label='remove todo item'>
                 <XMarkIcon className="h-6 w-6 text-red-500 hover:text-red-700" />
               </button>
             </div>
@@ -57,7 +57,7 @@ const TodoList = ({ todos, removeTodo, toggleComplete, removeCompleted }: TodoLi
         {/* Display a message if the list is empty */}
         {!updatedTodos.length && (
           <li className='w-full p-4 bg-slate-50 h-48'>
-            <h3 className='text-lg'>No Items in the list</h3>
+            <p className='text-lg'>No Items in the list</p>
           </li>
         )}
       </ul>
@@ -69,13 +69,14 @@ const TodoList = ({ todos, removeTodo, toggleComplete, removeCompleted }: TodoLi
               key={filter}
               className={`mr-2 ${filteredState === filter ? 'text-blue-600' : 'text-gray-600 hover:text-gray-800'}`}
               onClick={() => handleFilterChange(filter)}
+              aria-label={`apply filter ${filter}`}
             >
               {filter}
             </button>
           ))}
         </div>
         <div>
-          <button className='text-gray-600 hover:text-gray-800' onClick={removeCompleted}>Clear Completed</button>
+          <button className='text-gray-600 hover:text-gray-800' onClick={removeCompleted} aria-label='clear completed todos'>Clear Completed</button>
         </div>
       </div>
     </div>
