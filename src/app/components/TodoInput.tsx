@@ -22,7 +22,7 @@ const TodoInput = ({ onAdd }: TodoInputProps): JSX.Element => {
   };
 
   return (
-    <form onSubmit={addToDo} className="w-full flex">
+    <form onSubmit={addToDo} className="w-full flex" data-testid="todo-input">
       <input
         type="text"
         className="border border-gray-700 rounded p-3 sm:p-4 text-md sm:text-lg grow"
