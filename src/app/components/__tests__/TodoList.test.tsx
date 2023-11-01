@@ -113,7 +113,7 @@ describe('Todo List Component', () => {
     );
 
     // Remove completed todos
-    const removeCompletedButton = screen.getByText('Clear Completed');
+    const removeCompletedButton = screen.getByText('Remove Completed');
     fireEvent.click(removeCompletedButton);
 
     // Ensure that the onRemoveCompleted function is called

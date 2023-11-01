@@ -67,7 +67,7 @@ const TodoList = ({ todos, removeTodo, toggleComplete, removeCompleted }: TodoLi
           {Object.values(FILTERED_STATE).map((filter) => (
             <button
               key={filter}
-              className={`mr-2 ${filteredState === filter ? 'text-blue-600' : 'text-gray-600 hover:text-gray-800'}`}
+              className={`mr-2 ${filteredState === filter ? 'text-orange-600' : 'text-gray-800 hover:text-gray-950'}`}
               onClick={() => handleFilterChange(filter)}
               aria-label={`apply filter ${filter}`}
             >
@@ -76,7 +76,7 @@ const TodoList = ({ todos, removeTodo, toggleComplete, removeCompleted }: TodoLi
           ))}
         </div>
         <div>
-          <button className='text-gray-600 hover:text-gray-800' onClick={removeCompleted} aria-label='clear completed todos'>Clear Completed</button>
+          <button className='text-gray-800 hover:text-gray-950' onClick={removeCompleted} aria-label='remove completed todos'>Remove Completed</button>
         </div>
       </div>
     </div>
