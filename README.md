@@ -44,6 +44,7 @@ yarn test
 2. TypeScript
 3. Tailwind CSS
 4. React Testing Library
+5. Node v18 and above
 
 
 
