@@ -12,7 +12,7 @@ Users will be able to -
 
 First, install the dependencies
 
-Please use Node v18.17.0 and above.
+Note: Use Node **v18.17.0** and above.
 
 ```bash
 npm install
