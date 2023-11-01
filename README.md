@@ -12,7 +12,7 @@ Users will be able to -
 
 First, install the dependencies
 
-Please use Node v18 and above.
+Please use Node v18.17.0 and above.
 
 ```bash
 npm install
@@ -54,7 +54,7 @@ yarn test
 2. TypeScript
 3. Tailwind CSS
 4. React Testing Library
-5. Node v18 and above
+5. Node v18.17.0 and above
 
 
 
